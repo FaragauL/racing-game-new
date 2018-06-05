@@ -2,8 +2,8 @@ package org.fasttrackit;
 
 public class Game {
 
-    private Car firstCompetitor;
-    private Car secondCompetitor;
+    private Vehicle firstCompetitor;
+    private Vehicle secondCompetitor;
 
     public void start() {
         Car car1 = new Car("Dacia");
@@ -42,21 +42,23 @@ public class Game {
         car1.accelerate(7.2, 6.9);
         System.out.println(truck1);
         truck1.accelerate(7.2, 6.9);
+
+
     }
 
-    public Car getFirstCompetitor() {
+    public Vehicle getFirstCompetitor() {
         return firstCompetitor;
     }
 
-    public void setFirstCompetitor(Car firstCompetitor) {
+    public void setFirstCompetitor(Vehicle firstCompetitor) {
         this.firstCompetitor = firstCompetitor;
     }
 
-    public Car getSecondCompetitor() {
+    public Vehicle getSecondCompetitor() {
         return secondCompetitor;
     }
 
-    public void setSecondCompetitor(Car secondCompetitor) {
+    public void setSecondCompetitor(Vehicle secondCompetitor) {
         this.secondCompetitor = secondCompetitor;
     }
 }

@@ -7,7 +7,9 @@ public class Car extends AutoVehicle {
     public Car(String name) {
         super(name);
     }
-
+    public void honk() {
+        System.out.println("Tiiiiit!");
+    }
     public int getDoorCount() {
         return doorCount;
     }
