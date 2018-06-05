@@ -28,10 +28,20 @@ public class Game {
 
         car2.setEngine(engine2);
 
+        Truck truck1 = new Truck("MAN");
+        truck1.setColor("red");
+        truck1.setMileage(10.3);
+        truck1.setFuelLevel(65);
+
+        truck1.setEngine(engine2);
+
         firstCompetitor = car1;
         secondCompetitor = car2;
 
+        System.out.println(car1);
         car1.accelerate(7.2, 6.9);
+        System.out.println(truck1);
+        truck1.accelerate(7.2, 6.9);
     }
 
     public Car getFirstCompetitor() {
