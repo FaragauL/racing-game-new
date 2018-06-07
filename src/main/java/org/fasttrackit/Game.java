@@ -13,6 +13,7 @@ public class Game {
     public static final int LOWER_MILEAGE_BOUND = 3;
     public static final int UPPER_MILEAGE_BOUNF = 20;
     public static final int UPPER_MILEAGE_BOUND = UPPER_MILEAGE_BOUNF;
+    public static final double TRACK_LENGHT = 12000;
     private List<Vehicle> competitorsList = new ArrayList<>();
     private Vehicle firstCompetitor;
     private Vehicle secondCompetitor;
@@ -21,6 +22,8 @@ public class Game {
     public void start() {
 
         initCompetitors();
+        determineWinner();
+
 
 //        Car car1 = new Car("Dacia");
 //        car1.setColor("red");
@@ -73,14 +76,35 @@ public class Game {
 
     }
 
-    private void  initCompetitors() {
+    private void determineWinner() {
+        boolean winnerUnknown = true;
+
+
+        while (winnerUnknown) {
+
+            for (int i = 0; i < competitorsList.size(); i++) {
+                System.out.println("Enter acceleration speed for player" + (i + 1));
+                int accelerationSpeed = readAndCheckInt();
+                double traveledDistance = competitorsList.get(i).accelerate(accelerationSpeed);
+                competitorsList.get(i).setTraveledDistance(competitorsList.get(i).getTraveledDistance()+traveledDistance);
+
+                if (competitorsList.get(i).getTraveledDistance() >= TRACK_LENGHT) {
+                    System.out.println("Congrats! Player " + (i + 1) + " won the game.");
+                    winnerUnknown = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    private void initCompetitors() {
         System.out.println("Enter number of players.");
 
         int playerNumber = readAndCheckInt();
 
         System.out.println("Starting game with " + playerNumber + " players");
 
-        for (int i=1; i<=playerNumber; i++) {
+        for (int i = 1; i <= playerNumber; i++) {
             String name = readCarStringProperty(i, "Enter car name for player ");
             String color = readCarStringProperty(i, "Enter car color for player");
 
@@ -127,4 +151,5 @@ public class Game {
     public void setSecondCompetitor(Vehicle secondCompetitor) {
         this.secondCompetitor = secondCompetitor;
     }
+
 }

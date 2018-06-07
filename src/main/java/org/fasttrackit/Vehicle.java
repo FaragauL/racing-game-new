@@ -6,25 +6,31 @@ public class Vehicle {
     private String color;
     private double mileage;
     private double fuelLevel;
+    private double traveledDistance;
     //demonstrating constants
     public final static String RADIO_CONTROL = "Radio Control";
 
     public Vehicle(String name) {
         this.name = name;
     }
-    public double accelerate (double speed) {
+
+    public double accelerate(double speed) {
         return accelerate(speed, 60);
     }
 
     public double accelerate(double speed, double time) {
-        System.out.println("Vehicle" + name + "accelerates with " + speed + " for " + time + " seconds.");
-        double traveledDistance = speed * time;
-        System.out.println("Traveled distance: " + traveledDistance);
+        if (fuelLevel > 0) {
+            System.out.println("Vehicle" + name + "accelerates with " + speed + " for " + time + " seconds.");
+            double traveledDistance = speed * time;
+            System.out.println("Traveled distance: " + traveledDistance);
 
-        double consumedFuel = mileage * traveledDistance / 100;
-        fuelLevel = fuelLevel - consumedFuel;
+            double consumedFuel = mileage * traveledDistance / 100;
+            fuelLevel = fuelLevel - consumedFuel;
 
-        return traveledDistance;
+            return traveledDistance;
+        } else {
+            return 0;
+        }
     }
 
     public String getName() {
@@ -57,6 +63,14 @@ public class Vehicle {
 
     public void setFuelLevel(double fuelLevel) {
         this.fuelLevel = fuelLevel;
+    }
+
+    public double getTraveledDistance() {
+        return traveledDistance;
+    }
+
+    public void setTraveledDistance(double traveledDistance) {
+        this.traveledDistance = traveledDistance;
     }
 
     @Override
